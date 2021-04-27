@@ -1,0 +1,1 @@
+select count(1) from conductor where id <> :id and tipo_identificacion = :tipoIdentificacion and numero_identificacion = :numeroIdentificacion

@@ -1,0 +1,1 @@
+insert into ocupacion (id_conductor, id_vehiculo, id_espacio,id_reserva, total, fecha_inicio, fecha_fin) values (:idConductor, :idVehiculo, :idEspacio, :idEspacio, :total, :fechaInicio, :fechaFin)

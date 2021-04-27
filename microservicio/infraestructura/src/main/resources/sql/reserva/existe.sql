@@ -1,0 +1,1 @@
+select count(1) from reserva where fecha_inicio <= :fechaFin and fecha_fin >= :fechaInicio and estado = :estado

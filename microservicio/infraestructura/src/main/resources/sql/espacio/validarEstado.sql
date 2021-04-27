@@ -1,0 +1,1 @@
+select count(1) from espacio where id = :id and estado = :estado

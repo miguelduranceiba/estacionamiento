@@ -1,0 +1,1 @@
+insert into espacio (nombre, estado,fecha_creacion) values (:nombre, :estado, :fechaCreacion)
