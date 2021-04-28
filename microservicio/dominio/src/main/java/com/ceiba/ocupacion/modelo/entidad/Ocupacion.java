@@ -75,7 +75,7 @@ public class Ocupacion {
         return cantidadHoras;
     }
 
-    public boolean tieneReserva() {
-        return reserva != null;
+    public Long getIdReserva() {
+        return getReserva() == null ? null : getReserva().getId();
     }
 }

@@ -7,6 +7,8 @@ import com.ceiba.espacio.comando.ComandoEspacio;
 import com.ceiba.espacio.servicio.testdatabuilder.ComandoEspacioTestDataBuilder;
 import com.ceiba.ocupacion.comando.ComandoOcupacion;
 import com.ceiba.ocupacion.servicio.testdatabuilder.ComandoOcupacionTestDataBuilder;
+import com.ceiba.reserva.comando.ComandoReserva;
+import com.ceiba.reserva.servicio.testdatabuilder.ComandoReservaTestDataBuilder;
 import com.ceiba.vehiculo.comando.ComandoVehiculo;
 import com.ceiba.vehiculo.servicio.testdatabuilder.ComandoVehiculoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;

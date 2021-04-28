@@ -80,7 +80,7 @@ public class RepositorioReservaMysql implements RepositorioReserva {
     }
 
     @Override
-    public Reserva consultarPorId(Long id) {
+    public Reserva consultarPorId(long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 

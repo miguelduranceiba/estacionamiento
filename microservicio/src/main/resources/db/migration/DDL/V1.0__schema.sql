@@ -41,6 +41,21 @@ create table vehiculo (
  foreign key (id_tipo_vehiculo) references tipo_vehiculo(id)
 );
 
+create table reserva (
+ id int(11) not null auto_increment,
+ id_conductor int(11) not null,
+ id_vehiculo int(11) not null,
+ id_espacio int(11) not null,
+ estado smallint(6) not null,
+ fecha_inicio datetime not null,
+ fecha_fin datetime not null,
+ fecha_creacion datetime not null,
+ primary key (id),
+ constraint fk_reserva_conductor foreign key (id_conductor) references conductor(id),
+ constraint fk_reserva_vehiculo foreign key (id_vehiculo) references vehiculo(id),
+ foreign key (id_espacio) references espacio(id)
+);
+
 create table ocupacion (
  id int(11) not null auto_increment,
  id_conductor int(11) not null,
@@ -57,20 +72,6 @@ create table ocupacion (
  foreign key (id_reserva) references reserva(id)
 );
 
-create table reserva (
- id int(11) not null auto_increment,
- id_conductor int(11) not null,
- id_vehiculo int(11) not null,
- id_espacio int(11) not null,
- estado smallint(6) not null,
- fecha_inicio datetime not null,
- fecha_fin datetime not null,
- fecha_creacion datetime not null,
- primary key (id),
- constraint fk_reserva_conductor foreign key (id_conductor) references conductor(id),
- constraint fk_reserva_vehiculo foreign key (id_vehiculo) references vehiculo(id),
- foreign key (id_espacio) references espacio(id)
-);
 
 insert into tipo_vehiculo (id,  valor) values ( 1, 5000);
 insert into tipo_vehiculo (id, valor) values ( 2, 1000);

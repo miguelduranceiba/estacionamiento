@@ -54,5 +54,5 @@ public interface RepositorioReserva {
      * @param idReserva
      * @return
      */
-    Reserva consultarPorId(Long idReserva);
+    Reserva consultarPorId(long idReserva);
 }

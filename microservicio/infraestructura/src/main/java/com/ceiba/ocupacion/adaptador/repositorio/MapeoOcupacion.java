@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
+import java.sql.RowId;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
@@ -32,11 +33,16 @@ public class MapeoOcupacion implements RowMapper<Ocupacion>, MapperResult {
 
     @Override
     public Ocupacion mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+
         long id = resultSet.getLong("id");
         long idEspacio = resultSet.getLong("id_espacio");
         long idConductor = resultSet.getLong("id_conductor");
+        System.out.println(resultSet.wasNull());
         long idVehiculo = resultSet.getLong("id_vehiculo");
         Long idReserva = resultSet.getLong("id_reserva");
+        if (resultSet.wasNull()) {
+            idReserva = null;
+        }
         BigDecimal total = resultSet.getBigDecimal("id_vehiculo");
         LocalDateTime fechaInicio = extraerLocalDateTime(resultSet, "fecha_inicio");
         LocalDateTime fechaFin = extraerLocalDateTime(resultSet, "fecha_fin");
@@ -45,7 +51,9 @@ public class MapeoOcupacion implements RowMapper<Ocupacion>, MapperResult {
         Conductor conductor = repositorioConductor.consultarPorId(idConductor);
         Vehiculo vehiculo = repositorioVehiculo.consultarPorId(idVehiculo);
         Reserva reserva = null;
-        if (idReserva != null) reserva = repositorioReserva.consultarPorId(idReserva);
+        if (idReserva != null) {
+            reserva = repositorioReserva.consultarPorId(idReserva);
+        }
 
         return new Ocupacion(id, espacio, conductor, vehiculo, reserva, total, fechaInicio, fechaFin);
     }

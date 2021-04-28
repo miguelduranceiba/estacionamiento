@@ -49,9 +49,7 @@ public class RepositorioOcupacionMysql implements RepositorioOcupacion {
         paramSource.addValue("idConductor", ocupacion.getConductor().getId());
         paramSource.addValue("idVehiculo", ocupacion.getVehiculo().getId());
         paramSource.addValue("idEspacio", ocupacion.getEspacio().getId());
-        if (ocupacion.tieneReserva()) {
-            paramSource.addValue("idReserva", ocupacion.getReserva().getId());
-        }
+        paramSource.addValue("idReserva", ocupacion.getIdReserva());
         paramSource.addValue("total", ocupacion.getTotal());
         paramSource.addValue("fechaInicio", ocupacion.getFechaInicio());
         paramSource.addValue("fechaFin", ocupacion.getFechaFin());

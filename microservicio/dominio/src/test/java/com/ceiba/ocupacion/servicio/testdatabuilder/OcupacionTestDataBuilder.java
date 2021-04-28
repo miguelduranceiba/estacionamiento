@@ -28,7 +28,6 @@ public class OcupacionTestDataBuilder {
         this.espacio = getEspacio(1L);
         this.conductor = new Conductor(1L, "", "", "", "", "", "", now);
         this.vehiculo = new Vehiculo(1L, "MIGUEL", new TipoVehiculo(com.ceiba.tipoVehiculo.modelo.enumerado.TipoVehiculo.AUTOMOVIL.id(), BigDecimal.ZERO), now);
-        this.reserva = new Reserva(1L, 0, 0, 0, EstadoReserva.RESERVADO.id(), LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now());
         this.fechaInicio = now;
     }
 
