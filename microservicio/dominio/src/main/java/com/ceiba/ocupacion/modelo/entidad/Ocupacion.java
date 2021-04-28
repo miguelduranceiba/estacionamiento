@@ -20,6 +20,9 @@ public class Ocupacion {
 
     private final double DESCUENTO_MOTOCICLETA = 0.90;
 
+    private static final String SE_DEBE_INGRESAR_VEHICULO = "Se debe ingresar el vehículo";
+    private static final String SE_DEBE_INGRESAR_CONDUCTOR = "Se debe ingresar el conductor";
+    private static final String SE_DEBE_INGRESAR_ESPACIO = "Se debe ingresar el espacio";
     private static final String SE_DEBE_INGRESAR_FECHA_INICIO = "Se debe ingresar la fecha inicio";
     private long id;
     private Espacio espacio;
@@ -32,6 +35,9 @@ public class Ocupacion {
 
     public Ocupacion(long id, Espacio espacio, Conductor conductor, Vehiculo vehiculo, Reserva reserva, BigDecimal total, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 
+        validarObligatorio(espacio, SE_DEBE_INGRESAR_ESPACIO);
+        validarObligatorio(conductor, SE_DEBE_INGRESAR_CONDUCTOR);
+        validarObligatorio(vehiculo, SE_DEBE_INGRESAR_VEHICULO);
         validarObligatorio(fechaInicio, SE_DEBE_INGRESAR_FECHA_INICIO);
 
         this.id = id;

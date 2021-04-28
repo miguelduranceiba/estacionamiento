@@ -13,16 +13,7 @@ import org.mockito.Mockito;
 public class ServicioCrearConductorTest {
 
     @Test
-    public void validarInicializacionConductor() {
-        try {
-            new ConductorTestDataBuilder().build();
-        } catch (Exception e) {
-            Assert.fail();
-        }
-    }
-
-    @Test
-    public void validarCrearConductor() {
+    public void validarCrearConductorSiYaExiste() {
         Conductor conductor = new ConductorTestDataBuilder().build();
         RepositorioConductor repositorioConductor = Mockito.mock(RepositorioConductor.class);
         Mockito.when(repositorioConductor.existe(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
@@ -31,4 +22,18 @@ public class ServicioCrearConductorTest {
         BasePrueba.assertThrows(() -> servicioCrearConductor.ejecutar(conductor), ExcepcionDuplicidad.class, ServicioCrearConductor.EL_CONDUCTOR_YA_EXISTE);
     }
 
+    @Test
+    public void validarCrearConductorSiNoExiste() {
+        Conductor conductor = new ConductorTestDataBuilder().build();
+        RepositorioConductor repositorioConductor = Mockito.mock(RepositorioConductor.class);
+        ServicioCrearConductor servicioCrearConductor = new ServicioCrearConductor(repositorioConductor);
+
+        try {
+            servicioCrearConductor.ejecutar(conductor);
+            Assert.assertTrue(true);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+    }
 }
