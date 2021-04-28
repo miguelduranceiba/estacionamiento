@@ -38,7 +38,7 @@ pipeline {
 			gitTool: 'Default', 
 			submoduleCfg: [], 
 			userRemoteConfigs: [[
-			credentialsId: 'GitHub_yucaci24', 
+			credentialsId: 'GitHub_miguel.duran',
 			url:'https://github.com/miguelduranceiba/estacionamiento'
 			]]
 			])
