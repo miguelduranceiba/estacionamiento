@@ -78,7 +78,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-      junit 'build/test-results/test/*.xml' //RUTA DE TUS ARCHIVOS .XML
+      junit allowEmptyResults: true, testResults: "${WORKSPACE}/test-results/*.xml"
     }
     failure {
       echo 'This will run only if failed'
