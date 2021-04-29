@@ -5,7 +5,9 @@ import com.ceiba.conductor.servicio.ServicioActualizarConductor;
 import com.ceiba.conductor.servicio.ServicioCrearConductor;
 import com.ceiba.diaFestivo.puerto.repositorio.RepositorioFestivo;
 import com.ceiba.espacio.puerto.respositorio.RepositorioEspacio;
+import com.ceiba.espacio.servicio.ServicioActualizarEspacio;
 import com.ceiba.espacio.servicio.ServicioCrearEspacio;
+import com.ceiba.espacio.servicio.ServicioEliminarEspacio;
 import com.ceiba.ocupacion.puerto.repositorio.RepositorioOcupacion;
 import com.ceiba.ocupacion.servicio.ServicioCrearOcupacion;
 import com.ceiba.ocupacion.servicio.ServicioPagarOcupacion;
@@ -83,6 +85,16 @@ public class BeanServicio {
     @Bean
     public ServicioPagarOcupacion servicioPagarOcupacion(RepositorioOcupacion repositorioOcupacion, RepositorioEspacio repositorioEspacio, RepositorioFestivo repositorioFestivo) {
         return new ServicioPagarOcupacion(repositorioOcupacion, repositorioEspacio, repositorioFestivo);
+    }
+
+    @Bean
+    public ServicioEliminarEspacio servicioEliminarEspacio(RepositorioEspacio repositorioEspacio, RepositorioOcupacion repositorioOcupacion) {
+        return new ServicioEliminarEspacio(repositorioEspacio, repositorioOcupacion);
+    }
+
+    @Bean
+    public ServicioActualizarEspacio servicioActualizarEspacio(RepositorioEspacio repositorioEspacio) {
+        return new ServicioActualizarEspacio(repositorioEspacio);
     }
 
 }
