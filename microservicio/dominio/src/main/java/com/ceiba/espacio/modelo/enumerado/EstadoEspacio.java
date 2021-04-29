@@ -17,4 +17,8 @@ public enum EstadoEspacio {
     public int id() {
         return this.identificador;
     }
+
+    public boolean isId(int identificador) {
+        return this.identificador == identificador;
+    }
 }

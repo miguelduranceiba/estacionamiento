@@ -2,6 +2,8 @@ package com.ceiba;
 
 import static org.junit.Assert.fail;
 
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import org.junit.Assert;
@@ -32,6 +34,17 @@ public class BasePrueba {
             Assert.assertTrue(e.getMessage().contains(message));
         }
     }
+
+    public static void assertValid(Thunk supplier) {
+        try {
+            supplier.execute();
+            Assert.assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
 
     @FunctionalInterface
     public interface Thunk {

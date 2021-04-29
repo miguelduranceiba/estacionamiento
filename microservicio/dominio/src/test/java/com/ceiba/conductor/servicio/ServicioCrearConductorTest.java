@@ -1,10 +1,9 @@
-package com.ceiba.conductor;
+package com.ceiba.conductor.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.conductor.modelo.entidad.Conductor;
 import com.ceiba.conductor.puerto.repositorio.RepositorioConductor;
-import com.ceiba.conductor.servicio.ServicioCrearConductor;
-import com.ceiba.conductor.testdatabuilder.ConductorTestDataBuilder;
+import com.ceiba.conductor.servicio.testdatabuilder.ConductorTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import org.junit.Assert;
 import org.junit.Test;
@@ -28,12 +27,7 @@ public class ServicioCrearConductorTest {
         RepositorioConductor repositorioConductor = Mockito.mock(RepositorioConductor.class);
         ServicioCrearConductor servicioCrearConductor = new ServicioCrearConductor(repositorioConductor);
 
-        try {
-            servicioCrearConductor.ejecutar(conductor);
-            Assert.assertTrue(true);
-        } catch (Exception e) {
-            Assert.fail();
-        }
+        BasePrueba.assertValid(() -> servicioCrearConductor.ejecutar(conductor));
 
     }
 }

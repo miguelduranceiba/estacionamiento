@@ -9,6 +9,7 @@ import com.ceiba.vehiculo.modelo.entidad.Vehiculo;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,9 +21,9 @@ public class Ocupacion {
 
     private final double DESCUENTO_MOTOCICLETA = 0.90;
 
-    private static final String SE_DEBE_INGRESAR_VEHICULO = "Se debe ingresar el vehículo";
-    private static final String SE_DEBE_INGRESAR_CONDUCTOR = "Se debe ingresar el conductor";
     private static final String SE_DEBE_INGRESAR_ESPACIO = "Se debe ingresar el espacio";
+    private static final String SE_DEBE_INGRESAR_CONDUCTOR = "Se debe ingresar el conductor";
+    private static final String SE_DEBE_INGRESAR_VEHICULO = "Se debe ingresar el vehículo";
     private static final String SE_DEBE_INGRESAR_FECHA_INICIO = "Se debe ingresar la fecha inicio";
     private long id;
     private Espacio espacio;
@@ -77,5 +78,9 @@ public class Ocupacion {
 
     public Long getIdReserva() {
         return getReserva() == null ? null : getReserva().getId();
+    }
+
+    public boolean isTotal(BigDecimal total) {
+        return this.total.round(new MathContext(2)).compareTo(total) == 0;
     }
 }

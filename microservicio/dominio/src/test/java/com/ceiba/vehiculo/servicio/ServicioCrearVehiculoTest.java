@@ -1,4 +1,4 @@
-package com.ceiba.vehiculo;
+package com.ceiba.vehiculo.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
@@ -6,8 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.vehiculo.modelo.entidad.Vehiculo;
 import com.ceiba.vehiculo.puerto.repositorio.RepositorioVehiculo;
-import com.ceiba.vehiculo.servicio.ServicioCrearVehiculo;
-import com.ceiba.vehiculo.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.vehiculo.servicio.testdatabuilder.VehiculoTestDataBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -17,8 +16,8 @@ public class ServicioCrearVehiculoTest {
     private static final String PLACA_MIG001 = "MIG001";
 
     @Test
-    public void validarPlacaLongitudMenor6Test() {
-        VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca("MIG06");
+    public void validarPlacaLongitudMenor5Test() {
+        VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca("MIG1");
 
         BasePrueba.assertThrows(() -> vehiculoTestDataBuilder.build(), ExcepcionLongitudValor.class, Vehiculo.mensajeLongitudPlaca());
     }

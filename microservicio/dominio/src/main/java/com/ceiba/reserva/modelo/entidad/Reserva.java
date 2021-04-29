@@ -10,10 +10,13 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 @Getter
 public class Reserva {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
+    private static final String SE_DEBE_INGRESAR_VEHICULO = "Se debe ingresar el vehículo";
+    private static final String SE_DEBE_INGRESAR_CONDUCTOR = "Se debe ingresar el conductor";
+    private static final String SE_DEBE_INGRESAR_ESPACIO = "Se debe ingresar el espacio";
+    private static final String SE_DEBE_INGRESAR_ESTADO = "Se debe ingresar el estado";
     private static final String SE_DEBE_INGRESAR_FECHA_INICIO = "Se debe ingresar fecha inicio";
     private static final String SE_DEBE_INGRESAR_FECHA_FIN = "Se debe ingresar fecha fin";
-    private static final String SE_DEBE_INGRESAR_ESTADO = "Se debe ingresar el estado";
+    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
     private long id;
     private long idVehiculo;
     private long idConductor;
@@ -23,7 +26,11 @@ public class Reserva {
     private LocalDateTime fechaFin;
     private LocalDateTime fechaCreacion;
 
-    public Reserva(long id, long idVehiculo, long idConductor, long idEspacio, Integer estado, LocalDateTime fechaInicio, LocalDateTime fechaFin, LocalDateTime fechaCreacion) {
+    public Reserva(long id, Long idVehiculo, Long idConductor, Long idEspacio, Integer estado, LocalDateTime fechaInicio, LocalDateTime fechaFin, LocalDateTime fechaCreacion) {
+
+        validarObligatorio(idVehiculo, SE_DEBE_INGRESAR_VEHICULO);
+        validarObligatorio(idConductor, SE_DEBE_INGRESAR_CONDUCTOR);
+        validarObligatorio(idEspacio, SE_DEBE_INGRESAR_ESPACIO);
         validarObligatorio(estado, SE_DEBE_INGRESAR_ESTADO);
         validarObligatorio(fechaInicio, SE_DEBE_INGRESAR_FECHA_INICIO);
         validarObligatorio(fechaFin, SE_DEBE_INGRESAR_FECHA_FIN);

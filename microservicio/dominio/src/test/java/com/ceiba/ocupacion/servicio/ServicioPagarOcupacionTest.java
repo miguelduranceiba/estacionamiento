@@ -1,7 +1,8 @@
 package com.ceiba.ocupacion.servicio;
 
+import com.ceiba.BasePrueba;
 import com.ceiba.conductor.modelo.entidad.Conductor;
-import com.ceiba.conductor.testdatabuilder.ConductorTestDataBuilder;
+import com.ceiba.conductor.servicio.testdatabuilder.ConductorTestDataBuilder;
 import com.ceiba.diaFestivo.modelo.entidad.Festivo;
 import com.ceiba.diaFestivo.puerto.repositorio.RepositorioFestivo;
 import com.ceiba.espacio.modelo.entidad.Espacio;
@@ -12,7 +13,7 @@ import com.ceiba.ocupacion.servicio.testdatabuilder.OcupacionTestDataBuilder;
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.reserva.servicio.testdatabuilder.ReservaTestDataBuilder;
 import com.ceiba.vehiculo.modelo.entidad.Vehiculo;
-import com.ceiba.vehiculo.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.vehiculo.servicio.testdatabuilder.VehiculoTestDataBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -26,24 +27,19 @@ public class ServicioPagarOcupacionTest {
 
     @Test
     public void validarPagarOcupacionFestivo() {
+        Long id = 1L;
 
-        long id = 1L;
-        Espacio espacio = new Espacio(1L, 0, "", LocalDateTime.now());
-        Conductor conductor = new ConductorTestDataBuilder().build();
-        Vehiculo vehiculo = new VehiculoTestDataBuilder().build();
-        Reserva reserva = new ReservaTestDataBuilder().build();
-        BigDecimal total = null;
-        LocalDateTime fechaFestivo = LocalDateTime.now().minusHours(3);
-        LocalDateTime fechaFin = null;
-
-        Ocupacion ocupacion = new Ocupacion(id, espacio, conductor, vehiculo, reserva, total, fechaFestivo, fechaFin);
+        RepositorioOcupacion repositorioOcupacion = Mockito.mock(RepositorioOcupacion.class);
+        RepositorioEspacio repositorioEspacio = Mockito.mock(RepositorioEspacio.class);
+        RepositorioFestivo repositorioFestivo = Mockito.mock(RepositorioFestivo.class);
 
         List<Festivo> listaFestivo = new ArrayList<>();
-        listaFestivo.add(new Festivo(1L, fechaFestivo));
+        Mockito.when(repositorioFestivo.listar()).thenReturn(listaFestivo);
+        Mockito.when(repositorioOcupacion.consultarPorId(id)).thenReturn(new OcupacionTestDataBuilder().build());
 
-        ocupacion.finalizar(listaFestivo);
+        ServicioPagarOcupacion servicioPagarOcupacion = new ServicioPagarOcupacion(repositorioOcupacion, repositorioEspacio, repositorioFestivo);
 
-        Assert.assertEquals(ocupacion.getTotal(), new BigDecimal(30000));
+        BasePrueba.assertValid(() -> servicioPagarOcupacion.ejecutar(id));
     }
 
 }

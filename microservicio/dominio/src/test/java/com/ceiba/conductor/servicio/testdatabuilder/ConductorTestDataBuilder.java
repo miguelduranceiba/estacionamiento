@@ -1,7 +1,6 @@
-package com.ceiba.conductor.testdatabuilder;
+package com.ceiba.conductor.servicio.testdatabuilder;
 
 import com.ceiba.conductor.modelo.entidad.Conductor;
-import com.ceiba.vehiculo.testdatabuilder.VehiculoTestDataBuilder;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +21,11 @@ public class ConductorTestDataBuilder {
         this.primerNombre = "PEDRO";
         this.primerApellido = "CACERES";
         this.fecha = LocalDateTime.now();
+    }
+
+    public ConductorTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public ConductorTestDataBuilder conTipoIdentificacion(String tipoIdentificacion) {
@@ -51,6 +55,11 @@ public class ConductorTestDataBuilder {
 
     public ConductorTestDataBuilder conSegundoApellido(String segundoApellido) {
         this.segundoApellido = segundoApellido;
+        return this;
+    }
+
+    public ConductorTestDataBuilder conFechaCreacion(LocalDateTime fecha) {
+        this.fecha = fecha;
         return this;
     }
 
