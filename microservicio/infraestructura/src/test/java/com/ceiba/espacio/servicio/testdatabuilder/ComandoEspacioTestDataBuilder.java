@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class ComandoEspacioTestDataBuilder {
 
-    private long id;
+    private long id = 1L;
     private String nombre;
     private int estado;
     private LocalDateTime fechaCreacion;

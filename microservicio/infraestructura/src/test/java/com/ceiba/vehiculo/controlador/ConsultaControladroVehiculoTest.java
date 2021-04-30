@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class ConsultaControladroVehiculoTest {
 
-    private static final String PLACA_MIG001 = "MIG001";
+    private static final String PLACA1 = "PLACA1";
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -40,28 +40,22 @@ public class ConsultaControladroVehiculoTest {
         mocMvc.perform(get("/vehiculos")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 
     @Test
     public void buscarVehiculoPorPlaca() throws Exception {
 
-        ComandoVehiculo vehiculo = new ComandoVehiculoTestDataBuilder().conPlaca(PLACA_MIG001).build();
+        ComandoVehiculo vehiculo = new ComandoVehiculoTestDataBuilder().conPlaca(PLACA1).build();
 
-        mocMvc.perform(post("/vehiculos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(vehiculo)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-
-        mocMvc.perform(get("/vehiculos/{placa}", PLACA_MIG001)
+        mocMvc.perform(get("/vehiculos/{placa}", PLACA1)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void listarPorPlacaNoEncontrada() throws Exception {
-        mocMvc.perform(get("/vehiculos/{placa}", PLACA_MIG001)
+        mocMvc.perform(get("/vehiculos/{placa}", "PLACA12")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(HttpStatus.NOT_FOUND.value()));
     }

@@ -42,7 +42,7 @@ public class ComandoControladorVehiculoTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(vehiculo)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
+                .andExpect(content().json("{'valor': 2}"));
 
         mocMvc.perform(post("/vehiculos")
                 .contentType(MediaType.APPLICATION_JSON)

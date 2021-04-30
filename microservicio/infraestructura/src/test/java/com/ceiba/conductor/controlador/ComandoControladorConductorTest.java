@@ -41,13 +41,11 @@ public class ComandoControladorConductorTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(conductor)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
+                .andExpect(content().json("{'valor': 2}"));
     }
 
     @Test
     public void actualizar() throws Exception {
-        crear();
-
         Long id = 1L;
         ComandoConductor conductor = new ComandoConductorTestDataBuilder().build();
 

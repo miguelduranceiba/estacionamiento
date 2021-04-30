@@ -55,7 +55,7 @@ public class Ocupacion {
         BigDecimal cantidadHoras = calcularHorasParqueo();
         this.total = getVehiculo().getTipoVehiculo().getValor().multiply(cantidadHoras);
         if (getVehiculo().getTipoVehiculo().getId() == TipoVehiculo.MOTOCICLETA.id()) {
-            this.total = this.total.multiply(new BigDecimal(DESCUENTO_MOTOCICLETA));
+            this.total = this.total.multiply(BigDecimal.valueOf(DESCUENTO_MOTOCICLETA));
         }
         calcularDiaFestivo(listaDiaFestivo);
     }
@@ -72,8 +72,7 @@ public class Ocupacion {
     private BigDecimal calcularHorasParqueo() {
         this.fechaFin = LocalDateTime.now();
         Duration duration = Duration.between(getFechaInicio(), fechaFin);
-        BigDecimal cantidadHoras = new BigDecimal(duration.toHours());
-        return cantidadHoras;
+        return BigDecimal.valueOf(duration.toHours());
     }
 
     public Long getIdReserva() {

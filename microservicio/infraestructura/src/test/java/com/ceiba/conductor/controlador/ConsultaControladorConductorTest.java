@@ -36,23 +36,7 @@ public class ConsultaControladorConductorTest {
         mocMvc.perform(get("/conductores")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
-    }
-
-    @Test
-    public void crearListar() throws Exception {
-        ComandoConductor conductor = new ComandoConductorTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/conductores")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(conductor)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-
-        mocMvc.perform(get("/conductores")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)));
     }
+
 }

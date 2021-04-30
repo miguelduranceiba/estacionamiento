@@ -41,7 +41,7 @@ public class ComandoControladorReservaTest {
 
     @Test
     public void crear() throws Exception {
-        ComandoReserva reserva = getComandoReserva();
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
 
         mocMvc.perform(post("/reserva")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -57,7 +57,7 @@ public class ComandoControladorReservaTest {
 
     @Test
     public void crearReservaSabado() throws Exception {
-        ComandoReserva reserva = getComandoReserva();
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
         reserva.setFechaInicio(LocalDateTime.of(2021, 04, 24, 0, 0, 0));
 
         mocMvc.perform(post("/reserva")
@@ -68,7 +68,7 @@ public class ComandoControladorReservaTest {
 
     @Test
     public void crearReservaDiasDiferentes() throws Exception {
-        ComandoReserva reserva = getComandoReserva();
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
         reserva.setFechaInicio(LocalDateTime.of(2021, 04, 24, 0, 0, 0));
         reserva.setFechaFin(LocalDateTime.of(2021, 04, 28, 0, 0, 0));
 
@@ -77,43 +77,5 @@ public class ComandoControladorReservaTest {
                 .content(objectMapper.writeValueAsString(reserva)))
                 .andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
     }
-
-    private ComandoReserva getComandoReserva() throws Exception {
-        Long idVehiculo = 1L;
-        ComandoVehiculo vehiculo = new ComandoVehiculoTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/vehiculos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(vehiculo)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-
-        Long idConductor = 1L;
-
-        ComandoConductor conductor = new ComandoConductorTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/conductores")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(conductor)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-
-        Long idEspacio = 1L;
-
-        ComandoEspacio espacio = new ComandoEspacioTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/espacio")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(espacio)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-
-        ComandoReserva reserva = new ComandoReservaTestDataBuilder().conIdVehiculo(idVehiculo).conIdConductor(idConductor).conIdEspacio(idEspacio).build();
-        return reserva;
-    }
-
 
 }

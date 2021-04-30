@@ -17,6 +17,9 @@ public class ComandoReservaTestDataBuilder {
     private LocalDateTime fechaCreacion;
 
     public ComandoReservaTestDataBuilder() {
+        this.idVehiculo = 1L;
+        this.idEspacio = 1L;
+        this.idConductor = 1L;
         this.estado = EstadoReserva.RESERVADO.id();
         this.fechaInicio = LocalDateTime.now();
         this.fechaFin = LocalDateTime.now();

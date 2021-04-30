@@ -30,7 +30,8 @@ public class ConsultaControladorEspacioTest {
         mocMvc.perform(get("/espacio/disponible")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+                .andExpect(jsonPath("$", hasSize(1)));
+
     }
 
 }
