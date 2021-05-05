@@ -58,8 +58,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearOcupacion servicioCrearOcupacion(RepositorioOcupacion repositorioOcupacion, RepositorioEspacio repositorioEspacio) {
-        return new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio);
+    public ServicioCrearOcupacion servicioCrearOcupacion(RepositorioOcupacion repositorioOcupacion, RepositorioEspacio repositorioEspacio, RepositorioReserva repositorioReserva) {
+        return new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio, repositorioReserva);
     }
 
     @Bean

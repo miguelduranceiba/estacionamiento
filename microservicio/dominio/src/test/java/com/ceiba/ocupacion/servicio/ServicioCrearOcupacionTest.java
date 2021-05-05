@@ -8,6 +8,7 @@ import com.ceiba.espacio.servicio.testdatabuilder.EspacioTestDataBuilder;
 import com.ceiba.ocupacion.modelo.entidad.Ocupacion;
 import com.ceiba.ocupacion.puerto.repositorio.RepositorioOcupacion;
 import com.ceiba.ocupacion.servicio.testdatabuilder.OcupacionTestDataBuilder;
+import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -21,9 +22,11 @@ public class ServicioCrearOcupacionTest {
 
         RepositorioOcupacion repositorioOcupacion = Mockito.mock(RepositorioOcupacion.class);
         RepositorioEspacio repositorioEspacio = Mockito.mock(RepositorioEspacio.class);
+        RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
+
         Mockito.when(repositorioEspacio.estadoEspacio(idEspacio, EstadoEspacio.OCUPADO.id())).thenReturn(true);
 
-        ServicioCrearOcupacion servicioCrearOcupacion = new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio);
+        ServicioCrearOcupacion servicioCrearOcupacion = new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio, repositorioReserva);
 
         BasePrueba.assertThrows(() -> servicioCrearOcupacion.ejecutar(ocupacion), ExcepcionDuplicidad.class, ServicioCrearOcupacion.EL_ESPACIO_ESTA_OCUPADO);
     }
@@ -35,11 +38,10 @@ public class ServicioCrearOcupacionTest {
 
         RepositorioOcupacion repositorioOcupacion = Mockito.mock(RepositorioOcupacion.class);
         RepositorioEspacio repositorioEspacio = Mockito.mock(RepositorioEspacio.class);
+        RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
 
-        ServicioCrearOcupacion servicioCrearOcupacion = new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio);
+        ServicioCrearOcupacion servicioCrearOcupacion = new ServicioCrearOcupacion(repositorioOcupacion, repositorioEspacio, repositorioReserva);
 
         BasePrueba.assertValid(() -> servicioCrearOcupacion.ejecutar(ocupacion));
     }
-
-
 }

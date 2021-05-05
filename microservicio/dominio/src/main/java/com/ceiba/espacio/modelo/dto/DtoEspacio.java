@@ -12,6 +12,7 @@ public class DtoEspacio {
     private long id;
     private String nombre;
     private short estado;
+    private Long idOcupacion;
     private LocalDateTime fechaCreacion;
 
 }

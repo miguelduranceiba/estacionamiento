@@ -37,13 +37,12 @@ public class MapeoOcupacion implements RowMapper<Ocupacion>, MapperResult {
         long id = resultSet.getLong("id");
         long idEspacio = resultSet.getLong("id_espacio");
         long idConductor = resultSet.getLong("id_conductor");
-        System.out.println(resultSet.wasNull());
         long idVehiculo = resultSet.getLong("id_vehiculo");
         Long idReserva = resultSet.getLong("id_reserva");
         if (resultSet.wasNull()) {
             idReserva = null;
         }
-        BigDecimal total = resultSet.getBigDecimal("id_vehiculo");
+        BigDecimal total = resultSet.getBigDecimal("total");
         LocalDateTime fechaInicio = extraerLocalDateTime(resultSet, "fecha_inicio");
         LocalDateTime fechaFin = extraerLocalDateTime(resultSet, "fecha_fin");
 

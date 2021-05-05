@@ -10,7 +10,6 @@ import static com.ceiba.dominio.ValidadorArgumento.*;
 @Getter
 public class Vehiculo {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
     private static final String SE_DEBE_INGRESAR_LA_PLACA = "Se debe ingresar la placa del vehículo";
     private static final int LONGITUD_MINIMA_PLACA = 5;
     private static final String LA_PLACA_DEBE_TENER_UNA_LONGITUD_IGUAL_O_MAYOR_A = "La placa debe tener una longitud mayor o igual a %s ";
@@ -26,7 +25,6 @@ public class Vehiculo {
 
         validarObligatorio(placa, SE_DEBE_INGRESAR_LA_PLACA);
         validarObligatorio(tipoVehiculo, SE_DEBE_INGRESAR_TIPO_VEHICULO);
-        validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
 
         validarLongitud(placa, LONGITUD_MINIMA_PLACA, mensajeLongitudPlaca());
         validarNumeroYLetra(placa, LA_PLACA_NO_DEBE_TENER_CARACTERES_ESPECIALES_Y_ESPACIOS);

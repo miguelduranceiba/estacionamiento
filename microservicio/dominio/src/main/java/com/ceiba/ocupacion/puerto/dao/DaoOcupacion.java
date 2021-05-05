@@ -13,4 +13,10 @@ public interface DaoOcupacion {
      */
     List<DtoOcupacion> listar();
 
+    /**
+     * Permite obtener el consecutivo de un espacio
+     *
+     * @return
+     */
+    DtoOcupacion consultarPorEstadoYActivo(long idEspacio);
 }

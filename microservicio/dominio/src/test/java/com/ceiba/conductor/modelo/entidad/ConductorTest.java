@@ -56,13 +56,4 @@ public class ConductorTest {
                 new ConductorTestDataBuilder().conSegundoApellido(null).build()
         );
     }
-
-    @Test
-    public void validarFechaCreacionObligatorio() {
-        BasePrueba.assertThrows(() ->
-                        new ConductorTestDataBuilder().conFechaCreacion(null).build(),
-                ExcepcionValorObligatorio.class,
-                "Se debe ingresar la fecha de creación"
-        );
-    }
 }

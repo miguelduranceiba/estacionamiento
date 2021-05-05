@@ -1,3 +1,3 @@
-select id, id_conductor, id_vehiculo, id_espacio, fecha_inicio, fecha_fin, fecha_creacion
+select id, id_conductor, id_vehiculo, id_espacio,estado, fecha_inicio, fecha_fin, fecha_creacion
 from reserva
-where id_vehiculo = :idVehiculo
+where id_vehiculo = :idVehiculo and estado = :estado

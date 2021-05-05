@@ -13,7 +13,6 @@ public class Conductor {
     private static final String SE_DEBE_INGRESAR_NUMERO_IDENTIFICACION = "Se debe ingresar número de identificación";
     private static final String SE_DEBE_INGRESAR_PRIMER_NOMBRE = "Se debe ingresar el primer nombre";
     private static final String SE_DEBE_INGRESAR_PRIMER_APELLIDO = "Se debe ingresar el primer apellido";
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
 
     private Long id;
     private String tipoIdentificacion;
@@ -29,7 +28,6 @@ public class Conductor {
         validarObligatorio(numeroIdentificacion, SE_DEBE_INGRESAR_NUMERO_IDENTIFICACION);
         validarObligatorio(primerNombre, SE_DEBE_INGRESAR_PRIMER_NOMBRE);
         validarObligatorio(primerApellido, SE_DEBE_INGRESAR_PRIMER_APELLIDO);
-        validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
 
         this.id = id;
         this.tipoIdentificacion = tipoIdentificacion;

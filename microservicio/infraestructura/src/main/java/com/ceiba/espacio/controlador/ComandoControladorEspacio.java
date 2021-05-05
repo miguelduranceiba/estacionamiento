@@ -25,7 +25,7 @@ public class ComandoControladorEspacio {
     }
 
     @PostMapping
-    @ApiOperation("Crear espacio")
+    @ApiOperation("Crear Espacio")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoEspacio comandoEspacio) {
         return manejadorCrearEspacio.ejecutar(comandoEspacio);
     }

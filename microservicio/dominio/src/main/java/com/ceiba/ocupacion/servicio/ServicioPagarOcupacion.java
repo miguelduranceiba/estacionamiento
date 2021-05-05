@@ -23,7 +23,7 @@ public class ServicioPagarOcupacion {
 
         ocupacion.finalizar(repositorioFestivo.listar());
 
-        repositorioEspacio.actualizarEstado(ocupacion.getEspacio().getEstado(), EstadoEspacio.DISPONIBLE.id());
+        repositorioEspacio.actualizarEstado(ocupacion.getEspacio().getId(), EstadoEspacio.DISPONIBLE.id());
 
         this.repositorioOcupacion.pagar(ocupacion);
     }

@@ -14,6 +14,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -59,7 +61,7 @@ public class ComandoControladorOcupacionTest {
         LocalDateTime fechaFin = LocalDateTime.now();
         Duration duration = Duration.between(fechaInicio, fechaFin);
         BigDecimal cantidadHoras = new BigDecimal(duration.toHours());
-        BigDecimal total = new BigDecimal(5000).multiply(cantidadHoras);
+        BigDecimal total = BigDecimal.valueOf(5000).multiply(cantidadHoras);
 
         ComandoOcupacion ocupacion = new ComandoOcupacionTestDataBuilder().build();
         ocupacion.setFechaInicio(fechaInicio);
@@ -75,12 +77,6 @@ public class ComandoControladorOcupacionTest {
                 .content(objectMapper.writeValueAsString(ocupacion)))
                 .andExpect(status().isOk());
 
-        mocMvc.perform(get("/ocupacion")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].total", is(total.doubleValue())));
     }
-
 
 }

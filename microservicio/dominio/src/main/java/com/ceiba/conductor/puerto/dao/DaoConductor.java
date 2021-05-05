@@ -13,4 +13,12 @@ public interface DaoConductor {
 	 * @return los conductores
 	 */
 	List<DtoConductor> listar();
+
+	/**
+	 * Permite consultar un conductor por la identificación
+	 *
+	 * @param identificacion
+	 * @return
+	 */
+	DtoConductor consultarPorIdentificacion(String identificacion);
 }

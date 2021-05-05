@@ -48,7 +48,7 @@ public class ConsultaControladroVehiculoTest {
 
         ComandoVehiculo vehiculo = new ComandoVehiculoTestDataBuilder().conPlaca(PLACA1).build();
 
-        mocMvc.perform(get("/vehiculos/{placa}", PLACA1)
+        mocMvc.perform(get("/vehiculos/placa/{placa}", PLACA1)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

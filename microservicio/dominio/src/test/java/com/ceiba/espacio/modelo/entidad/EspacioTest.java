@@ -52,10 +52,8 @@ public class EspacioTest {
 
     @Test
     public void validarFechaCreacion() {
-        BasePrueba.assertThrows(() ->
-                        new EspacioTestDataBuilder().conFechaCreacion(null).build(),
-                ExcepcionValorObligatorio.class,
-                "Se debe ingresar la fecha de creación"
+        BasePrueba.assertValid(() ->
+                new EspacioTestDataBuilder().conFechaCreacion(null).build()
         );
     }
 }

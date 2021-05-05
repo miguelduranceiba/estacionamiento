@@ -34,4 +34,14 @@ public class ConsultaControladorEspacioTest {
 
     }
 
+    @Test
+    public void listar() throws Exception {
+
+        mocMvc.perform(get("/espacio")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)));
+
+    }
+
 }

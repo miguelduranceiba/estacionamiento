@@ -9,6 +9,8 @@ import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+
 @Repository
 public class RepositorioEspacioMysql implements RepositorioEspacio {
     private static final String ESPACIO_NO_ENCONTRADO = "El espacio no se encontró en el sistema";
@@ -39,7 +41,8 @@ public class RepositorioEspacioMysql implements RepositorioEspacio {
 
     @Override
     public Long crear(Espacio espacio) {
-        return this.customNamedParameterJdbcTemplate.crear(espacio, sqlCrear);
+        Espacio espacioCrear = new Espacio(0, espacio.getEstado(), espacio.getNombre(), LocalDateTime.now());
+        return this.customNamedParameterJdbcTemplate.crear(espacioCrear, sqlCrear);
     }
 
     @Override

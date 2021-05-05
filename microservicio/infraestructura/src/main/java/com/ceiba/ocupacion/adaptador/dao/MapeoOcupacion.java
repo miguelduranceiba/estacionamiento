@@ -1,11 +1,9 @@
 package com.ceiba.ocupacion.adaptador.dao;
 
-import com.ceiba.conductor.puerto.repositorio.RepositorioConductor;
-import com.ceiba.espacio.puerto.respositorio.RepositorioEspacio;
+import com.ceiba.espacio.modelo.dto.DtoEspacio;
+import com.ceiba.espacio.puerto.dao.DaoEspacio;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.ocupacion.modelo.dto.DtoOcupacion;
-import com.ceiba.ocupacion.modelo.entidad.Ocupacion;
-import com.ceiba.vehiculo.puerto.repositorio.RepositorioVehiculo;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.math.BigDecimal;
@@ -24,6 +22,7 @@ public class MapeoOcupacion implements RowMapper<DtoOcupacion>, MapperResult {
         BigDecimal total = resultSet.getBigDecimal("total");
         LocalDateTime fechaInicio = extraerLocalDateTime(resultSet, "fecha_inicio");
         LocalDateTime fechaFin = extraerLocalDateTime(resultSet, "fecha_fin");
+
 
         return new DtoOcupacion(id, idEspacio, idConductor, idVehiculo, total, fechaInicio, fechaFin);
     }

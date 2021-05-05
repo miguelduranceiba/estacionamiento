@@ -8,6 +8,8 @@ import com.ceiba.ocupacion.modelo.entidad.Ocupacion;
 import com.ceiba.ocupacion.servicio.ServicioCrearOcupacion;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ManejadorCrearOcupacion implements ManejadorComandoRespuesta<ComandoOcupacion, ComandoRespuesta<Long>> {
 
@@ -20,6 +22,7 @@ public class ManejadorCrearOcupacion implements ManejadorComandoRespuesta<Comand
     }
 
     public ComandoRespuesta<Long> ejecutar(ComandoOcupacion comandoOcupacion) {
+        comandoOcupacion.setFechaInicio(LocalDateTime.now());
         Ocupacion ocupacion = this.fabricaOcupacion.crear(comandoOcupacion);
         return new ComandoRespuesta<>(this.servicioCrearOcupacion.ejecutar(ocupacion));
     }

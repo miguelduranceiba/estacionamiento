@@ -46,7 +46,7 @@ public class ServicioCrearReserva {
     }
 
     private void validarDiaDiferenteEntreFecha(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-        boolean correcto = fechaInicio.compareTo(fechaFin) != 0;
+        boolean correcto = fechaInicio.toLocalDate().compareTo(fechaFin.toLocalDate()) != 0;
         if (correcto) {
             throw new ExcepcionValorInvalido(EL_RANGO_RESERVA_DEBE_SER_EL_MISMO_DIA);
         }

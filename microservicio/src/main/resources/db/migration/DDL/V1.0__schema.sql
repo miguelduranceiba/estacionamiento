@@ -11,9 +11,9 @@ create table conductor (
  tipo_identificacion varchar(10) not null,
  numero_identificacion varchar(20) not null,
  primer_nombre varchar(50) not null,
- segundo_nombre varchar(50) not null,
+ segundo_nombre varchar(50) null,
  primer_apellido varchar(50) not null,
- segundo_apellido varchar(50) not null,
+ segundo_apellido varchar(50) null,
  fecha_creacion datetime null,
  primary key (id)
 );

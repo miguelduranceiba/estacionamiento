@@ -26,7 +26,7 @@ public class VehiculoTest {
 
     @Test
     public void excepcionFechaCreacionObligatorio() {
-        BasePrueba.assertThrows(() -> new VehiculoTestDataBuilder().conFechaCreacion(null).build(), ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creación");
+        BasePrueba.assertValid(() -> new VehiculoTestDataBuilder().conFechaCreacion(null).build());
     }
 
     @Test

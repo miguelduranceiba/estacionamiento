@@ -19,7 +19,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 @Getter
 public class Ocupacion {
 
-    private final double DESCUENTO_MOTOCICLETA = 0.90;
+    private static final double DESCUENTO_MOTOCICLETA = 0.90;
 
     private static final String SE_DEBE_INGRESAR_ESPACIO = "Se debe ingresar el espacio";
     private static final String SE_DEBE_INGRESAR_CONDUCTOR = "Se debe ingresar el conductor";
@@ -81,5 +81,9 @@ public class Ocupacion {
 
     public boolean isTotal(BigDecimal total) {
         return this.total.round(new MathContext(2)).compareTo(total) == 0;
+    }
+
+    public boolean tieneReserva() {
+        return reserva != null;
     }
 }

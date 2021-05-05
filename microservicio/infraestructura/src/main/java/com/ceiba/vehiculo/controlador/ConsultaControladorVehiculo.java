@@ -31,8 +31,8 @@ public class ConsultaControladorVehiculo {
         return this.manejadorListarVehiculo.ejecutar();
     }
 
-    @GetMapping(value = "/{placa}")
-    @ApiOperation("Listar vehiculos")
+    @GetMapping("placa/{placa}")
+    @ApiOperation("Consultar vehículo por placa")
     public DtoVehiculo consultarPorPlaca(@PathVariable String placa) {
         return this.manejadorListarVehiculoPorPlaca.ejecutar(placa);
     }

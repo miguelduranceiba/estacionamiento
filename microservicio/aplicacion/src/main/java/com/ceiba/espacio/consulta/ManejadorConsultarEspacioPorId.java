@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ManejadorListarEspacioDisponible {
+public class ManejadorConsultarEspacioPorId {
 
     private final DaoEspacio daoEspacio;
 
-    public ManejadorListarEspacioDisponible(DaoEspacio daoEspacio) {
+    public ManejadorConsultarEspacioPorId(DaoEspacio daoEspacio) {
         this.daoEspacio = daoEspacio;
     }
 
-    public List<DtoEspacio> ejecutar() {
-        return daoEspacio.listarEspacioActivo();
+    public DtoEspacio ejecutar(long id) {
+        return daoEspacio.consultarPorId(id);
     }
 }
