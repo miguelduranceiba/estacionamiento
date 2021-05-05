@@ -21,6 +21,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -47,7 +48,7 @@ public class ComandoControladorEspacioTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(espacio)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
+                .andExpect(content().json("{'valor': 3}"));
     }
 
 
@@ -58,7 +59,7 @@ public class ComandoControladorEspacioTest {
         mocMvc.perform(get("/espacio/disponible")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(jsonPath("$", hasSize(2)));
 
         mocMvc.perform(delete("/espacio/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -68,7 +69,7 @@ public class ComandoControladorEspacioTest {
         mocMvc.perform(get("/espacio/disponible")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 
     @Test
@@ -82,5 +83,7 @@ public class ComandoControladorEspacioTest {
                 .content(objectMapper.writeValueAsString(espacio)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 1}"));
+
+
     }
 }

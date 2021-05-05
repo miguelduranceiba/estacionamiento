@@ -20,8 +20,8 @@ public class Espacio {
 
     public Espacio(long id, Integer estado, String nombre, LocalDateTime fechaCreacion) {
 
-        validarObligatorio(estado, SE_DEBE_INGRESAR_ESTADO);
         validarObligatorio(nombre, SE_DEBE_INGRESAR_NOMBRE);
+        validarObligatorio(estado, SE_DEBE_INGRESAR_ESTADO);
         validarEnumerado((enumerado) -> enumerado.isId(estado), EstadoEspacio.class, SE_DEBE_INGRESAR_ESTADO_VALIDO);
 
         this.id = id;

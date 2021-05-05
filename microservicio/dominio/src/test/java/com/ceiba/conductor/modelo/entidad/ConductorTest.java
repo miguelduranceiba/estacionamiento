@@ -8,6 +8,13 @@ import org.junit.Test;
 public class ConductorTest {
 
     @Test
+    public void validarInicializacion() {
+        BasePrueba.assertValid(() ->
+                new ConductorTestDataBuilder().build()
+        );
+    }
+
+    @Test
     public void validarTipoIdentificacionObligatorio() {
         BasePrueba.assertThrows(() ->
                         new ConductorTestDataBuilder().conTipoIdentificacion(null).build(),
@@ -56,4 +63,6 @@ public class ConductorTest {
                 new ConductorTestDataBuilder().conSegundoApellido(null).build()
         );
     }
+
+
 }

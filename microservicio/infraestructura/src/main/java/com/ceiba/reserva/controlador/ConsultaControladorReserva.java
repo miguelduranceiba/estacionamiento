@@ -22,7 +22,7 @@ public class ConsultaControladorReserva {
         this.manejadorListarReservaPorVehiculo = manejadorListarReservaPorVehiculo;
     }
 
-    @GetMapping( "vehiculo/{idVehiculo}")
+    @GetMapping("/vehiculo/{idVehiculo}")
     @ApiOperation("Consultar Reservas por Vehículo")
     public List<DtoReserva> listarPorVehiculo(@PathVariable long idVehiculo) {
         return this.manejadorListarReservaPorVehiculo.ejecutar(idVehiculo);

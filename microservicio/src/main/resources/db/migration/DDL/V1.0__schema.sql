@@ -72,7 +72,6 @@ create table ocupacion (
  foreign key (id_reserva) references reserva(id)
 );
 
-
 insert into tipo_vehiculo (id,  valor) values ( 1, 5000);
 insert into tipo_vehiculo (id, valor) values ( 2, 1000);
 

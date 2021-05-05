@@ -28,7 +28,7 @@ public class DaoReservaMysql implements DaoReserva {
     public List<DtoReserva> listarReservaPorVehiculo(long idVehiculo) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idVehiculo", idVehiculo);
-        paramSource.addValue("estado", EstadoReserva.RESERVADO);
+        paramSource.addValue("estado", EstadoReserva.RESERVADO.id());
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPorVehiculo, paramSource,
                 new MapeoReserva());

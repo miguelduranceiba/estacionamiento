@@ -39,6 +39,18 @@ public class ServicioCrearReservaTest {
     }
 
     @Test
+    public void validarFinDeSemana() {
+        LocalDateTime fechaInicio = LocalDateTime.of(2021, 5, 8, 0, 0, 0);
+        LocalDateTime fechaFin = LocalDateTime.of(2021, 5, 8, 1, 0, 0);
+
+        Reserva reserva = new ReservaTestDataBuilder().conFechaInicio(fechaInicio).conFechaFin(fechaFin).build();
+        RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
+        ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva);
+
+        BasePrueba.assertThrows(() -> servicioCrearReserva.ejecutar(reserva), ExcepcionValorInvalido.class, "No se pueden hacer reservas los sábados y domingos");
+    }
+
+    @Test
     public void validarFechaDiferenteResultadoValido() {
         LocalDateTime fechaInicio = LocalDateTime.of(2021, 1, 1, 1, 0, 0);
         LocalDateTime fechaFin = LocalDateTime.of(2021, 1, 1, 9, 0, 0);

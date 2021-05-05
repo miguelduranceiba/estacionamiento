@@ -47,7 +47,7 @@ public class ComandoControladorReservaTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(reserva)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
+                .andExpect(content().json("{'valor': 2}"));
 
         mocMvc.perform(post("/reserva")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -55,27 +55,5 @@ public class ComandoControladorReservaTest {
                 .andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
     }
 
-    @Test
-    public void crearReservaSabado() throws Exception {
-        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
-        reserva.setFechaInicio(LocalDateTime.of(2021, 04, 24, 0, 0, 0));
-
-        mocMvc.perform(post("/reserva")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(reserva)))
-                .andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
-    }
-
-    @Test
-    public void crearReservaDiasDiferentes() throws Exception {
-        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
-        reserva.setFechaInicio(LocalDateTime.of(2021, 04, 24, 0, 0, 0));
-        reserva.setFechaFin(LocalDateTime.of(2021, 04, 28, 0, 0, 0));
-
-        mocMvc.perform(post("/reserva")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(reserva)))
-                .andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
-    }
 
 }
