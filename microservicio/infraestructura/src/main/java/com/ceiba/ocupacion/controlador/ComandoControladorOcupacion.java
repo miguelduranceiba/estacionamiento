@@ -29,7 +29,7 @@ public class ComandoControladorOcupacion {
 
     @PostMapping(path = "/pagar/{idOcupacion}")
     @ApiOperation("Pagar por ocupación")
-    public void crear(@PathVariable long idOcupacion) {
+    public void pagar(@PathVariable long idOcupacion) {
         manejadorPagarOcupacion.ejecutar(idOcupacion);
     }
 

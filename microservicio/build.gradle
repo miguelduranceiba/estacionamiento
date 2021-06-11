@@ -16,7 +16,7 @@ allprojects {
 	project.ext.junitvintage = ["org.junit.vintage:junit-vintage-engine:5.7.0"]
 	project.ext.mockito = ['org.mockito:mockito-all:1.10.19']
 	project.ext.lombok = ["org.projectlombok:lombok:1.18.10"]
-	
+
 	project.ext.springboottest = ["org.springframework.boot:spring-boot-starter-test:${springBootVersion}"]
 	project.ext.springbootweb = ["org.springframework.boot:spring-boot-starter-web:${springBootVersion}"]
 	project.ext.springdevtools = ["org.springframework.boot:spring-boot-devtools:${springBootVersion}"]

@@ -39,4 +39,12 @@ public class ConsultaControladorConductorTest {
                 .andExpect(jsonPath("$", hasSize(1)));
     }
 
+    @Test
+    public void listar() throws Exception {
+        mocMvc.perform(get("identificacion/{identificacion}", '123')
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)));
+    }
+
 }
